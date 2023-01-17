@@ -33,7 +33,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   Certificacao_Indicium_Luis_Henrique: 
-    example:
+    staging:
+      +materialized: view 
+    marts:
       +materialized: table   # Deixando que tudo que for criado na pasta models (dimensões e fatos) sejam tabelas.
 
 seeds:

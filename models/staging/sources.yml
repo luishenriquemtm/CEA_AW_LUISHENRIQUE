@@ -1,0 +1,141 @@
+version: 2
+
+sources:
+  - name: db_aw
+    description: Banco de dados da empresa Adventure Works.
+    schema: sap_adw
+    tables:
+      - name: salesorderheader
+        description: Tabela com ordem de vendas, data de pedido e envio e chaves que relacionam com outras tabelas (clientes cartões, detalhes de pedidos, envios e vendas)
+        columns:
+          - name: salesorderid
+            description: Chave primária da tabela Sales Order Header
+            Test:
+              - unique
+              - not_null
+          - name: creditcardid
+            description: Chave estrangeira da tabela Sales Order Header que liga a tabela CreditCard
+            Test:
+              - not_null
+          - name: customerid
+            description: Chave estrangeira da tabela Sales Order Header que liga a tabela Customer
+            Test:
+              - not_null 
+          - name: shiptoaddressid
+            description: Chave estrangeira da tabela Sales Order Header que liga a tabela Adress
+            Test:
+              - not_null 
+
+      - name: salesorderdetail
+        description: Tabela com os detalhes dos pedidos em quantidades, ofertas, preços unitários e com descontos, chaves que relacionam com outras tabelas.
+        columns:
+          - name: salesorderid
+            description: Chave estrangeira da tabela Sales Order Detail.
+            Test:
+              - not_null
+          - name: productid
+            description: Chave estrangeira da tabela Sales Order Detail.
+            Test:
+              - not_null
+
+
+      - name: salesorderheadersalesreason
+        description: Tabela com a chave FK para a tabela Sales Reason.
+        columns:
+          - name: salesreasonid 
+            description: Chave estrangeira da tabela Sales Order Header Sales Reason
+            Test:
+              - not_null
+          - name: salesorderid
+            description: Chave estrangeira da tabela Sales Order Header Sales Reason
+            Test:
+              - not_null
+        
+      - name: salesreason
+        description: Tabela que consta os motivos de vendas (price, review, quality, on promotion...)
+        columns:
+          - name: salesreasonid 
+            description: Chave primária da tabela Sales Reason
+            Test:
+              - not_null
+              - unique
+        
+      - name: creditcard
+        description: Tabela que informa o tipo do cartão, número do cartão e data de expedição.
+        columns:
+          - name: creditcardid
+            description: Chave primária da tabela Credit Card
+            Test:
+              - unique
+              - not_null
+        
+      - name: product
+        description: Tabela que informa todos os detalhes dos produtos vendidos pela Adventure Works.
+        columns:
+          - name: productid
+            description: Chave primária da tabela Product
+            Test:
+              - unique
+              - not_null
+        
+      - name: address
+        description: Tabela que informa o endereço das vendas feitas, com endereço e cidade.
+        columns:
+          - name: addressid
+            description: Chave primária da tabela Address
+            Test:
+              - unique
+              - not_null
+          - name: stateprovinceid
+            description: Chave estrangeira da tabela Address
+            Test:
+              - not_null
+        
+      - name: stateprovince
+        description: Tabela base dos nos das provincias (estados) com seus respectivos códigos.
+        columns:
+          - name: stateprovinceid
+            description: Chave primária da tabela State Province
+            Test:
+              - unique
+              - not_null
+          - name: countryregioncode
+            description: Chave estrangeira da tabela State Province
+            Test:
+              - not_null
+        
+      - name: countryregion
+        description: Tabela com o nome dos países de acordo com seu código.
+        columns:
+          - name: countryregioncode
+            description: Chave primária da tabela Country Region
+            Test:
+              - unique
+              - not_null
+        
+      - name: customer
+        description: Tabela com os ID dos clientes.
+        columns:
+          - name: customerid
+            description: Chave primária da tabela Customer
+            Test:
+              - unique
+              - not_null
+        
+      - name: person
+        description: Tabela com o nome e sobrenome dos clientes pessoas.
+        columns:
+          - name: businessentityid
+            description: Chave primária da tabela Person que relaciona com a tabela Customer pela chave personid
+            Test:
+              - unique
+              - not_null
+        
+      - name: store
+        description: Tabela com o nome clientes que são lojas.
+        columns:
+          - name: businessentityid
+            description: Chave primária da tabela Store que relaciona com a tabela Customer pela chave storeid
+            Test:
+              - unique
+              - not_null

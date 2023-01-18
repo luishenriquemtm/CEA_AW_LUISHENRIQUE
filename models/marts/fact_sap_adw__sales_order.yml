@@ -1,0 +1,48 @@
+version: 2
+models:
+  - name: fact_sales_order
+    description: Dimensão com informação das cidades, estados e países dos clientes.
+    columns:
+      - name: sk_sales_order_id
+        description: E a primary key da facts.
+        tests:
+          - unique
+          - not_null
+      - name: sales_order_id
+        description: Coluna dos ID dos pedidos feitos pelos clientes.
+      
+      - name: full_name
+        description: Coluna com o nome completo da pessoa física.
+      
+      - name: name_store
+        description: Coluna com o nome da loja.
+      
+      - name: person_type
+        description: Coluna que traz o tipo de cliente (se é pessoa física ou loja).
+      
+      - name: card_type
+        description: Coluna com o nome do cartão utilizado na compra.
+      
+      - name: city
+        description: Coluna com o nome da cidade que para onde será enviado o pedido (cidade do cliente)
+      
+      - name: name_province
+        description: Coluna com o nome do estado que para onde será enviado o pedido (estado do cliente)
+      
+      - name: name_country
+        description: Coluna com o nome do país que para onde será enviado o pedido (país do cliente)
+      
+      - name: order_date
+        description: Coluna com a data da ordem do pedido executado.
+      
+      - name: order_quantity
+        description: Coluna com a quantidade de produtos feitas no pedido. (Relacionado diretamente com a coluna name_product)
+      
+      - name: name_product
+        description: Coluna com o nome do produto realizado no pedido.
+      
+      - name: unit_price
+        description: Coluna com o preço unitário de cada pedido.
+       
+      - name: reason_name
+        description: Coluna que traz a informação se o produto foi comprado na promoção (on promotion)

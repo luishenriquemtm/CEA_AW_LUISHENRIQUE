@@ -1,0 +1,12 @@
+version: 2
+models:
+  - name: dim_credit_card
+    description: Dimensão com informação do tipo de cartão de crédito e com ID.
+    columns:
+      - name: pk_credit_card
+        description: E a primary key da dimensão de credit_card (que relaciona com o a stg Sales order Header.)
+        tests:
+          - unique
+          - not_null
+      - name: card_type
+        description: Coluna que traz o tipo de cartão de crédito que o cliente usou na compra.

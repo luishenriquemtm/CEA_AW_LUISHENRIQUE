@@ -1,0 +1,12 @@
+version: 2
+models:
+  - name: dim_products
+    description: Dimensão com informação dos produtos oferecidos pela Adventure Works
+    columns:
+      - name: pk_product
+        description: E a primary key da dimensão products (Coluna que traz o ID do produto)
+        tests:
+          - unique
+          - not_null
+      - name: name_product  
+        description: Coluna que traz o nome dos produtos vendidos pela Adventure Works.

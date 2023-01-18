@@ -1,0 +1,31 @@
+version: 2
+models:
+  - name: dim_customer
+    description: Dimensão com informação dos clientes da Adventure Works
+    columns:
+      - name: pk_customer_id
+        description: E a primary key da dimensão customer (Coluna que traz o ID do cliente para relacionar com a Fact)
+        tests:
+          - unique
+          - not_null
+      
+      - name: person_type 
+        description: Coluna que traz o "tipo" da pessoa, se é Loja (Store) ou Pessoa Física (Natural Person)
+      
+      - name: person_id 
+        description: Coluna chave que faz o Join com a tabela Person
+      
+      - name: store_id   
+        description: Coluna chave que faz o Join com a tabela Store.
+      
+      - name: first_name  
+        description: Coluna que traz o primeiro nome do cliente pessoa física.
+     
+      - name: last_name
+        description: Coluna que traz o último nome do cliente pessoa física.
+      
+      - name: name_store  
+        description: Coluna que traz o nome da loja para clientes 'Store'
+
+      - name: full_name  
+        description: Coluna que traz o nome completo do cliente pessoa física.

@@ -1,0 +1,29 @@
+version: 2
+models:
+  - name: dim_territory
+    description: Dimensão com informação das cidades, estados e países dos clientes.
+    columns:
+      - name: pk_address_id
+        description: E a primary key da dimensão territory (Coluna que traz o ID do endereço para relacionar com a Fact)
+        tests:
+          - unique
+          - not_null
+      
+      - name: city  
+        description: Nome da cidade
+
+      - name: state_province_id 
+        description: Coluna que traz a chave para fazer o Join com a tabela State_Province
+
+      - name: state_province_code
+        description: Sigla do estado onde se situa a cidade. (código da província)
+
+      - name: name_province
+        description: Nome do estado (nome da província)
+
+      - name: country_region_code
+        description: Sigla do país onde se situa a cidade/estado.
+
+      - name: name_country
+        description: Nome do país.
+

@@ -19,7 +19,7 @@ with
         from {{ref('stg_sap_adw__sales_reason')}}
     ) 
 
-    , joined_table_facts as ( -- Aqui vai ser montado a tabela Fact com as tabelas Orders (que não formam DIM)
+    , joined_table_facts as ( 
         select
             sales_order_header.sales_order_id
             , sales_order_header.customer_id
@@ -41,6 +41,7 @@ with
         select 
             row_number() over(order by sales_order_id) as sk_sales_order_id
             ,*
+            , order_quantity * unit_price as total_product_value
         from joined_table_facts
     )
 

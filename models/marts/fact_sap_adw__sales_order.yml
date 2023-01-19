@@ -37,3 +37,6 @@ models:
        
       - name: reason_name
         description: Coluna que traz a informação se o produto foi comprado na promoção (on promotion)
+
+      - name: total_product_value
+        description: Coluna que traz a informação do valor total (valor do prouto * quantidade)

@@ -5,7 +5,7 @@ with
             , cast (customerid as int) as customer_id
             , cast (creditcardid as int) as credit_card_id
             , cast (shiptoaddressid as int) as ship_to_address_id
-            , cast (orderdate as string) as order_date
+            , cast (orderdate as DATETIME) as order_date
         from {{ source('db_aw','salesorderheader')}}
     )
 
